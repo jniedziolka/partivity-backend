@@ -6,3 +6,11 @@ services:
             dockerfile: ./docker/php/Dockerfile
         volumes:
             - ./:/var/www/html
+    server:
+        build:
+            context: ./
+            dockerfile: ./docker/nginx/Dockerfile
+        ports:
+            - '8080:80'
+        volumes:
+            -   ./:/var/www/html
