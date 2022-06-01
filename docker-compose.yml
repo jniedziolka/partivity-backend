@@ -14,3 +14,17 @@ services:
             - '8080:80'
         volumes:
             -   ./:/var/www/html:ro
+    db:
+        image: mysql
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+        ports:
+            - '3306:3306'
+        volumes:
+            - partivity-db:/var/lib/mysql
+
+volumes:
+    partivity-db:
